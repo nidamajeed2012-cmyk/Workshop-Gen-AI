@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nida Majeed | Generative AI for Work & Research Portfolio</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #657084;
+      --cream: #fffaf2;
+      --white: #ffffff;
+      --rose: #f7d6dc;
+      --coral: #ee8d79;
+      --plum: #7c3f73;
+      --violet: #5546a3;
+      --blue: #4e9bd8;
+      --mint: #dff5ec;
+      --gold: #f5c86a;
+      --shadow: 0 22px 60px rgba(36, 34, 61, 0.14);
+      --soft-shadow: 0 14px 40px rgba(36, 34, 61, 0.10);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(245, 200, 106, 0.35), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(78, 155, 216, 0.22), transparent 34%),
+        linear-gradient(135deg, #fff7ee 0%, #f7fbff 44%, #fbf4ff 100%);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 28px 0 54px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 20px;
+      margin-bottom: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      background: rgba(255, 255, 255, 0.58);
+      backdrop-filter: blur(18px);
+      border-radius: 999px;
+      box-shadow: var(--soft-shadow);
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--plum), var(--violet), var(--blue));
+      box-shadow: 0 10px 25px rgba(85, 70, 163, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 0.93rem;
+    }
+
+    .nav-links a {
+      padding: 9px 14px;
+      border-radius: 999px;
+      color: #354057;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(124, 63, 115, 0.10);
+      color: var(--plum);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.18fr 0.82fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+
+    .hero-card,
+    .profile-card,
+    .section,
+    .submission-card,
+    .metric-card {
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      background: rgba(255, 255, 255, 0.67);
+      backdrop-filter: blur(20px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      padding: clamp(30px, 5vw, 60px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -100px;
+      top: -90px;
+      background: radial-gradient(circle, rgba(238, 141, 121, 0.50), transparent 68%);
+      border-radius: 50%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(85, 70, 163, 0.09);
+      color: var(--violet);
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 6px rgba(238, 141, 121, 0.16);
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 5.55rem);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      max-width: 830px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, var(--plum), var(--violet), var(--blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: clamp(1.06rem, 1.7vw, 1.28rem);
+      color: #3e485d;
+      max-width: 760px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 760;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--plum), var(--violet));
+      box-shadow: 0 15px 34px rgba(85, 70, 163, 0.28);
+    }
+
+    .secondary {
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--ink);
+      border: 1px solid rgba(85, 70, 163, 0.18);
+    }
+
+    .profile-card {
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+      min-height: 480px;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(145deg, rgba(124, 63, 115, 0.10), transparent 40%),
+        radial-gradient(circle at 78% 20%, rgba(95, 176, 211, 0.30), transparent 32%),
+        radial-gradient(circle at 18% 78%, rgba(245, 200, 106, 0.34), transparent 34%);
+      pointer-events: none;
+    }
+
+    .portrait {
+      position: relative;
+      z-index: 1;
+      width: 168px;
+      height: 168px;
+      border-radius: 45px;
+      display: grid;
+      place-items: center;
+      margin: 12px auto 20px;
+      color: white;
+      background: linear-gradient(135deg, #5f3c88, #8b467d 48%, #ec927a);
+      font-size: 4rem;
+      font-weight: 800;
+      font-family: Inter, Arial, sans-serif;
+      box-shadow: 0 26px 50px rgba(124, 63, 115, 0.24);
+      transform: rotate(-3deg);
+    }
+
+    .profile-card h2 {
+      position: relative;
+      z-index: 1;
+      font-size: 1.75rem;
+      text-align: center;
+      letter-spacing: -0.03em;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+    }
+
+    .chips {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 9px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .chip {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(85, 70, 163, 0.14);
+      color: #3f4860;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 0.83rem;
+      font-weight: 700;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card {
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric-card::after {
+      content: "";
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      right: -25px;
+      bottom: -28px;
+      border-radius: 50%;
+      background: rgba(85, 70, 163, 0.08);
+    }
+
+    .metric-number {
+      font-size: 2.15rem;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--plum);
+      margin-bottom: 7px;
+    }
+
+    .metric-label {
+      font-family: Inter, Arial, sans-serif;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .section {
+      border-radius: var(--radius-xl);
+      padding: clamp(26px, 4vw, 46px);
+      margin-bottom: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(223, 245, 236, 0.92), transparent 70%);
+      right: -70px;
+      top: -80px;
+    }
+
+    .section-heading {
+      position: relative;
+      z-index: 1;
+      max-width: 740px;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      color: var(--coral);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-family: Inter, Arial, sans-serif;
+      font-size: 0.76rem;
+      font-weight: 850;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      margin-bottom: 12px;
+    }
+
+    .section-heading p,
+    .about-grid p,
+    .course-card p,
+    .footer p {
+      color: #4b566e;
+      font-size: 1.04rem;
+    }
+
+    .about-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .panel {
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.60);
+      border: 1px solid rgba(85, 70, 163, 0.11);
+      padding: 24px;
+      min-height: 100%;
+    }
+
+    .panel h3,
+    .course-card h3,
+    .submission-card h3 {
+      font-family: Inter, Arial, sans-serif;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--violet);
+      margin-bottom: 12px;
+    }
+
+    .list {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+      font-family: Inter, Arial, sans-serif;
+      color: #465169;
+    }
+
+    .list li {
+      display: grid;
+      grid-template-columns: 26px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: linear-gradient(135deg, var(--coral), var(--plum));
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .course-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .course-card {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.78), rgba(255,255,255,0.46));
+      border: 1px solid rgba(85, 70, 163, 0.13);
+      min-height: 210px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .course-card:hover,
+    .submission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 24px 50px rgba(36, 34, 61, 0.12);
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(124,63,115,0.15), rgba(78,155,216,0.18));
+    }
+
+    .submissions {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .submission-card {
+      min-height: 168px;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.63);
+      border: 1px solid rgba(85, 70, 163, 0.13);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .week-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--plum);
+      background: rgba(247, 214, 220, 0.48);
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 0.78rem;
+      margin-bottom: 12px;
+    }
+
+    .submission-card p {
+      color: var(--muted);
+      font-family: Inter, Arial, sans-serif;
+      font-size: 0.94rem;
+      margin-bottom: 18px;
+    }
+
+    .placeholder-link {
+      color: var(--violet);
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 800;
+      font-size: 0.92rem;
+      opacity: 0.78;
+    }
+
+    .timeline {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 18px;
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(85, 70, 163, 0.10);
+    }
+
+    .timeline-date {
+      font-family: Inter, Arial, sans-serif;
+      font-weight: 850;
+      color: var(--plum);
+    }
+
+    .timeline-item h3 {
+      font-size: 1.15rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 26px 18px 0;
+    }
+
+    .footer strong {
+      color: var(--plum);
+    }
+
+    @media (max-width: 940px) {
+      .hero,
+      .about-grid,
+      .course-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics,
+      .submissions {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .profile-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: min(100% - 22px, 1180px);
+        padding-top: 14px;
+      }
+
+      .nav {
+        border-radius: 28px;
+        align-items: flex-start;
+        flex-direction: column;
+        position: static;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .hero-card,
+      .profile-card,
+      .section {
+        border-radius: 26px;
+      }
+
+      .metrics,
+      .submissions {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Portfolio navigation">
+      <a class="brand" href="#top" aria-label="Nida Majeed portfolio home">
+        <span class="brand-mark">NM</span>
+        <span>Nida Majeed</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About me</a>
+        <a href="#course">Course</a>
+        <a href="#submissions">Submissions</a>
+        <a href="#experience">Experience</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <div class="eyebrow"><span class="dot"></span> Course portfolio</div>
+        <h1>Generative AI for <span class="gradient-text">Work & Research</span></h1>
+        <p class="hero-text">
+          A living portfolio documenting my learning journey, weekly submissions, and practical exploration of no-code AI tools for research productivity, public health work, teaching, writing, and professional communication.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#submissions">View weekly submissions</a>
+          <a class="button secondary" href="#about">Learn about me</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile summary">
+        <div>
+          <div class="portrait">N</div>
+          <h2>Nida Liaquat Majeed</h2>
+          <p>Public health professional · WHO experience · Research, surveillance & training</p>
+        </div>
+        <div class="chips" aria-label="Professional focus areas">
+          <span class="chip">Public Health</span>
+          <span class="chip">WHO Experience</span>
+          <span class="chip">VPD Surveillance</span>
+          <span class="chip">Research Writing</span>
+          <span class="chip">Training</span>
+          <span class="chip">CELTA</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="metrics" aria-label="Professional highlights">
+      <div class="metric-card">
+        <div class="metric-number">8+</div>
+        <div class="metric-label">Years of international public health experience with WHO and national programmes</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-number">100+</div>
+        <div class="metric-label">Reporting facilities strengthened during district surveillance expansion</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-number">B1</div>
+        <div class="metric-label">French level achieved, alongside expert English communication skills</div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <div class="section-kicker">About me</div>
+        <h2>Bridging public health, research, teaching, and responsible AI.</h2>
+        <p>
+          I am a public health professional with a background in dentistry and international experience in surveillance, outbreak response, laboratory coordination, monitoring and evaluation, report writing, and capacity building.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="panel">
+          <h3>Professional profile</h3>
+          <p>
+            My work has included vaccine-preventable disease surveillance, congenital rubella syndrome surveillance, disease early warning systems, outbreak alert coordination, training material development, and analytical reporting. I am especially interested in using AI tools to improve the clarity, speed, and quality of research and public health communication.
+          </p>
+        </div>
+        <div class="panel">
+          <h3>Core strengths</h3>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Surveillance reporting, bulletins, and data interpretation</span></li>
+            <li><span class="check">✓</span><span>Guideline, SOP, and training material development</span></li>
+            <li><span class="check">✓</span><span>National-level trainings and stakeholder coordination</span></li>
+            <li><span class="check">✓</span><span>Research support, evaluations, KAP surveys, and interviews</span></li>
+            <li><span class="check">✓</span><span>Teaching experience and CELTA-informed communication</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="course">
+      <div class="section-heading">
+        <div class="section-kicker">About the course</div>
+        <h2>Generative AI for Work & Research</h2>
+        <p>
+          This course explores practical ways to use generative AI and no-code AI tools to support professional tasks, research workflows, writing, productivity, communication, and evidence-informed work.
+        </p>
+      </div>
+
+      <div class="course-grid">
+        <article class="course-card">
+          <div class="icon">✦</div>
+          <h3>Research productivity</h3>
+          <p>Using AI to structure literature notes, summarize evidence, organize ideas, and support clearer research communication.</p>
+        </article>
+        <article class="course-card">
+          <div class="icon">⌁</div>
+          <h3>Work automation</h3>
+          <p>Exploring no-code tools that can reduce repetitive tasks, improve planning, and support efficient professional workflows.</p>
+        </article>
+        <article class="course-card">
+          <div class="icon">◈</div>
+          <h3>Responsible practice</h3>
+          <p>Building careful habits around accuracy, privacy, transparency, human judgement, and ethical use of AI-generated outputs.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="submissions">
+      <div class="section-heading">
+        <div class="section-kicker">My weekly submissions</div>
+        <h2>A space to collect my course work.</h2>
+        <p>
+          These cards are placeholders for now. Links to each weekly assignment, reflection, project, or submitted activity can be added later.
+        </p>
+      </div>
+
+      <div class="submissions">
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 1</span>
+            <h3>Foundation & orientation</h3>
+            <p>Introduction to generative AI tools and personal learning goals.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 2</span>
+            <h3>Prompting for productivity</h3>
+            <p>Practical prompting tasks for work, writing, and communication.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 3</span>
+            <h3>Research support</h3>
+            <p>Using AI to organize research questions, summaries, and evidence notes.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 4</span>
+            <h3>Automation workflow</h3>
+            <p>A no-code workflow or productivity experiment for professional tasks.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 5</span>
+            <h3>AI-assisted writing</h3>
+            <p>Drafting, refining, and improving clarity while keeping human judgement.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 6</span>
+            <h3>Data & communication</h3>
+            <p>Turning information into clear summaries, visuals, or professional outputs.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 7</span>
+            <h3>Applied project</h3>
+            <p>A practical AI-supported project connected to work or research needs.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+
+        <article class="submission-card">
+          <div>
+            <span class="week-label">Week 8</span>
+            <h3>Final reflection</h3>
+            <p>Key learning, responsible AI habits, and next steps for future use.</p>
+          </div>
+          <span class="placeholder-link">Link coming soon →</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="section-heading">
+        <div class="section-kicker">Experience highlights</div>
+        <h2>Public health experience that shapes my AI learning goals.</h2>
+        <p>
+          My background helps me approach AI not as a replacement for professional judgement, but as a tool to support better organization, clearer writing, and more efficient knowledge work.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2018–2019</div>
+          <div>
+            <h3>National Consultant, CRS Surveillance — WHO Pakistan</h3>
+            <p>Supported national stakeholders, protocols, SOPs, training materials, surveillance indicators, and sentinel surveillance expansion.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2014–2017</div>
+          <div>
+            <h3>Technical Officer, EPI Surveillance — WHO/MoH Pakistan</h3>
+            <p>Worked on VPD surveillance, outbreak investigation tools, national trainings, laboratory network coordination, and surveillance review meetings.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2011–2014</div>
+          <div>
+            <h3>Surveillance Officer, DEWS — WHO Pakistan</h3>
+            <p>Led and supported disease early warning surveillance, outbreak alerts, weekly data analysis, reports, bulletins, and field coordination.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Teaching</div>
+          <div>
+            <h3>Lecturer, demonstrator & CELTA-trained teacher</h3>
+            <p>Experience in teaching dental subjects, community learning activities, and English teaching methodology through CELTA training.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>
+        Designed as a course portfolio for <strong>Generative AI for Work & Research</strong> · Built without frameworks · Email intentionally omitted for privacy.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
