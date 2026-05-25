@@ -569,12 +569,23 @@
       margin-bottom: 18px;
     }
 
-    .placeholder-link {
+    .placeholder-link,
+    .project-link {
       color: var(--violet);
       font-family: Inter, Arial, sans-serif;
       font-weight: 800;
       font-size: 0.92rem;
       opacity: 0.78;
+    }
+
+    .project-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .featured-submission {
+      background: linear-gradient(145deg, rgba(255,255,255,0.86), rgba(247,214,220,0.34));
+      border: 1px solid rgba(124, 63, 115, 0.28);
     }
 
     .timeline {
@@ -811,7 +822,7 @@
         <div class="section-kicker">My weekly submissions</div>
         <h2>A space to collect my course work.</h2>
         <p>
-          These cards are placeholders for now. Links to each weekly assignment, reflection, project, or submitted activity can be added later.
+          These cards collect weekly assignments, reflections, projects, and submitted activities from my Generative AI for Work & Research learning journey.
         </p>
       </div>
 
@@ -834,13 +845,22 @@
           <span class="placeholder-link">Link coming soon →</span>
         </article>
 
-        <article class="submission-card">
+        <article class="submission-card featured-submission">
           <div>
             <span class="week-label">Week 3</span>
-            <h3>Research support</h3>
-            <p>Using AI to organize research questions, summaries, and evidence notes.</p>
+            <h3>Workshop 3: Job Market Data Analysis</h3>
+            <p>
+              Used LLMs in Google Sheets to extract information from job postings, then analyzed the data with AI tools to explore relationships between experience requirements, programming languages, and salaries.
+            </p>
           </div>
-          <span class="placeholder-link">Link coming soon →</span>
+          <a
+            class="project-link"
+            href="https://github.com/nidamajeed2012-cmyk/Workshop-Gen-AI/blob/main/Data%20Analyst%20job%20posting%20report.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View project report →
+          </a>
         </article>
 
         <article class="submission-card">
