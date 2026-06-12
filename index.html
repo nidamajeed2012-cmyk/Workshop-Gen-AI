@@ -624,6 +624,24 @@
       color: var(--muted);
     }
 
+    .consultation-card {
+      position: relative;
+      z-index: 1;
+      border-radius: var(--radius-lg);
+      padding: clamp(16px, 3vw, 24px);
+      background: rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(85, 70, 163, 0.13);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .consultation-form {
+      width: 100%;
+      min-height: 809px;
+      border: 0;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.75);
+    }
+
     .footer {
       text-align: center;
       padding: 26px 18px 0;
@@ -693,6 +711,10 @@
       .timeline-item {
         grid-template-columns: 1fr;
       }
+
+      .consultation-form {
+        min-height: 860px;
+      }
     }
   </style>
 </head>
@@ -708,6 +730,7 @@
         <a href="#course">Course</a>
         <a href="#submissions">Submissions</a>
         <a href="#experience">Experience</a>
+        <a href="#consultation">Consultation</a>
       </div>
     </nav>
 
@@ -729,6 +752,7 @@
         <div class="hero-actions">
           <a class="button primary" href="#submissions">View weekly submissions</a>
           <a class="button secondary" href="#about">Learn about me</a>
+          <a class="button secondary" href="#consultation">Contact for consultation</a>
         </div>
       </div>
 
@@ -964,9 +988,35 @@
       </div>
     </section>
 
+    <section class="section" id="consultation">
+      <div class="section-heading">
+        <div class="section-kicker">Contact for consultation</div>
+        <h2>Let’s connect for public health, research, training, or AI-supported work.</h2>
+        <p>
+          Please complete the consultation form below to share your request, collaboration idea, or area where you would like professional support.
+        </p>
+      </div>
+
+      <div class="consultation-card">
+        <iframe
+          class="consultation-form"
+          src="https://docs.google.com/forms/d/e/1FAIpQLScrjCYLMOgQgP9OfdPgBr-n86JZq4lC_14Qdvm0hG30u_ARJQ/viewform?embedded=true"
+          width="640"
+          height="809"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Contact for Consultation Google Form"
+          loading="lazy"
+        >
+          Loading…
+        </iframe>
+      </div>
+    </section>
+
     <footer class="footer">
       <p>
-        Designed as a course portfolio for <strong>Generative AI for Work & Research</strong> · Built without frameworks · Email intentionally omitted for privacy.
+        Designed as a course portfolio for <strong>Generative AI for Work & Research</strong> · Built without frameworks · Consultation form included for professional contact.
       </p>
     </footer>
   </main>
